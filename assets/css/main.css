@@ -6375,3 +6375,291 @@ section,
   padding: 80px 0;
   background-color: var(--background-color);
 }
+
+
+/* ==========================================================
+   VIREX PORTFOLIO PREMIUM TOAST
+========================================================== */
+
+#toast{
+    position:fixed;
+    top:30px;
+    right:30px;
+    z-index:999999;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    pointer-events:none;
+}
+
+.virex-toast{
+
+    width:420px;
+    max-width:calc(100vw - 40px);
+
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:20px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(13,110,253,.12);
+
+    box-shadow:
+        0 18px 45px rgba(13,110,253,.12),
+        0 8px 18px rgba(0,0,0,.08);
+
+    transform:translateX(500px);
+    opacity:0;
+
+    animation:virexToastIn .55s cubic-bezier(.17,.89,.32,1.25) forwards;
+
+    pointer-events:auto;
+}
+
+/* Glow */
+
+.virex-toast::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:radial-gradient(circle at top right,
+            rgba(13,110,253,.18),
+            transparent 60%);
+
+    pointer-events:none;
+
+}
+
+/* Accent Line */
+
+.virex-toast::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:5px;
+
+}
+
+.virex-toast.success::after{
+
+    background:linear-gradient(
+        90deg,
+        #0d6efd,
+        #31b7ff,
+        #66d9ff
+    );
+
+}
+
+.virex-toast.error::after{
+
+    background:linear-gradient(
+        90deg,
+        #ff4b5c,
+        #ff7b54
+    );
+
+}
+
+/* Icon */
+
+.virex-toast .icon{
+
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+
+    font-size:28px;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(13,110,253,.25);
+
+}
+
+.virex-toast.success .icon{
+
+    background:linear-gradient(
+        135deg,
+        #149ddd,
+        #31b7ff
+    );
+
+}
+
+.virex-toast.error .icon{
+
+    background:linear-gradient(
+        135deg,
+        #ff4b5c,
+        #ff8a65
+    );
+
+}
+
+/* Text */
+
+.virex-toast h4{
+
+    margin:0;
+
+    color:#16324f;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.virex-toast p{
+
+    margin:6px 0 0;
+
+    color:#5c7085;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+/* Progress */
+
+.virex-toast .progress{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:4px;
+
+    transform-origin:left;
+
+    animation:virexProgress 4s linear forwards;
+
+}
+
+.virex-toast.success .progress{
+
+    background:linear-gradient(
+        90deg,
+        #149ddd,
+        #4fc3ff
+    );
+
+}
+
+.virex-toast.error .progress{
+
+    background:linear-gradient(
+        90deg,
+        #ff4b5c,
+        #ff8a65
+    );
+
+}
+
+/* Hide */
+
+.virex-toast.hide{
+
+    animation:virexToastOut .4s ease forwards;
+
+}
+
+/* Hover */
+
+.virex-toast:hover{
+
+    transform:translateX(0) scale(1.02);
+
+    transition:.25s;
+
+}
+
+/* Animations */
+
+@keyframes virexToastIn{
+
+    0%{
+
+        opacity:0;
+
+        transform:translateX(450px) scale(.85);
+
+    }
+
+    65%{
+
+        opacity:1;
+
+        transform:translateX(-8px) scale(1.02);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:translateX(0) scale(1);
+
+    }
+
+}
+
+@keyframes virexToastOut{
+
+    to{
+
+        opacity:0;
+
+        transform:translateX(450px) scale(.85);
+
+    }
+
+}
+
+@keyframes virexProgress{
+
+    from{
+
+        transform:scaleX(1);
+
+    }
+
+    to{
+
+        transform:scaleX(0);
+
+    }
+
+}
